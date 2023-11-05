@@ -1,0 +1,126 @@
+/*
+-------------------------------------------
+-------------------------------------------
+----------My Mass OBJs Exporter------------
+-------------------------------------------
+--------------MEL SCRIPT-------------------
+Author: Saprin Alexey Petrovich aka 0crash0
+icq: 312014478
+e-mail: 0crash0@bk.ru
+site: 0crash0.tw1.ru
+Created: 02.03.2014
+version: 0.1
+License: U can use it in all purposes
+-------------------------------------------
+-------------------------------------------
+*/
+string $OBJsFlNms[]= `ls -sl`;
+string $SvFld="";
+string $curFlnM="";
+//string $lstFlNms[2]={"s","fd"};
+
+
+global proc myOBJsExp_UI(){
+	string $dialog;
+	if (`window -exists $dialog`)deleteUI -window $dialog;
+	string $d = `internalVar -usd`;
+	$dialog = `loadUI -uiFile ($d+"myOBJsExp/myOBJsExp.ui")`;
+	showWindow $dialog;
+	msObjs_updSlLst();
+	$SvFld = `workspace -q -active`;
+	textField -edit -tx $SvFld FldtSav;
+}
+
+
+global proc msObjs_updSlLst(){
+	string $ssel[] = `ls -sl`;
+	$exs=0;
+	string $tokTmp[];
+	int $count=0;
+	for($sl in $ssel){
+		$lstSlobjs = `textScrollList -q -ai selOBJsEx`;
+		$exsOb=0;
+		for($lstSl in $lstSlobjs){
+			if ($lstSl == $sl){
+			$exsOb=1;
+			}
+		}
+		if ($exsOb==0){
+			textScrollList -edit -append $sl selOBJsEx;
+			
+			$count = `tokenize $sl "|" $tokTmp`;
+			$sl = $tokTmp[$count - 1];
+			textScrollList -edit -append $sl OBJsFlNms;
+		}
+	}
+}
+
+
+global proc replObjFns(){
+	$curFlnM = `textScrollList -q -selectItem OBJsFlNms`;
+	$curFlnMnum = `textScrollList -q -selectIndexedItem OBJsFlNms`;
+	$chT=`textField -q -text cFlNm`;
+	textScrollList -edit -removeIndexedItem $curFlnMnum[0] OBJsFlNms;
+	textScrollList -edit -appendPosition $curFlnMnum[0] $chT OBJsFlNms;
+	
+}
+
+
+
+global proc gt_FldSv(string $dirpath,string $type) {
+	$SvFld = $dirpath;
+	textField -edit -tx $SvFld FldtSav;
+}
+global proc FldBrs(){
+	fileBrowser( "gt_FldSv", "Text", "", 4 );
+}
+
+global proc myExpObjs(){
+	$SvFld=`textField -q -tx FldtSav`;
+	$curFlnM = `textScrollList -q -ai OBJsFlNms`;
+	$selObjs = `textScrollList -q -ai selOBJsEx`;
+	int $i=0;
+	int $exxt=0;
+	$ovWrA = `checkBox -q -value ovWrFl`;
+	$sttsEx = "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:600; color:#ff0004;\">Existing files are not overwritten</span></p></body></html>";
+	$sttsOk = "<html><head/><body><p align=\"center\"><span style=\" color:#00ff00;\">All objects saved!</span></p></body></html>";
+	for($cFl in $curFlnM){
+		$cFfl=$SvFld+"/"+$cFl+".obj";
+		select -clear;
+		select -add $selObjs[$i];
+		$exst = `file -q -exists $cFfl`;
+		
+		if($exst  && !$ovWrA){
+			$stt=("Exist: "+$cFfl+"\n");
+			$exxt=1;
+			textScrollList -edit -append $stt stLst;
+		}
+		else{
+			file -force -options "groups=0;ptgroups=0;materials=0;smoothing=1;normals=1" -typ "OBJexport" -pr -es $cFfl;
+			$stt=("Exported: "+$cFfl+"\n");
+			if($exst  && $ovWrA){
+				$stt = ("Overwritten: "+$cFfl+"\n");
+			}
+			textScrollList -edit -append $stt stLst;
+		}
+		
+		$i++;
+	}
+	select -clear;
+	for($slOb in $selObjs){
+		select -add $slOb;
+	}
+	
+	if($exxt && !$ovWrA){
+		textField -edit -tx $sttsEx stTxt;
+	}
+	else{
+		textField -edit -tx $sttsOk stTxt;
+	}
+}
+
+
+global proc updsCurFlNm(){
+	$curFlnM = `textScrollList -q -selectItem OBJsFlNms`;
+	textField -edit -text $curFlnM cFlNm;
+}
