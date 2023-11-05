@@ -25,27 +25,33 @@
 `/Users/<username>/Library/Preferences/Autodesk/maya/<version>/scripts/myOBJsExp/myOBJsExp.ui`
 
 2. You can create button on the shelf:
-![](https://github.com/0crash0/myOBJsExp/blob/master/images/Screenshot_1.png?raw=true)
-![](https://github.com/0crash0/myOBJsExp/blob/master/images/Screenshot_2.png?raw=true)
-![](https://github.com/0crash0/myOBJsExp/blob/master/images/Screenshot_3.png?raw=true)
-and add that mel script:
+
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_1.png)
+
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_2.png)
+
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_3.png)
+
+	and add that mel script:
 `source "myOBJsExp/myOBJsExp.mel"; myOBJsExp_UI();`
 
 3. You have to enable objExport plugin:
-![](https://github.com/0crash0/myOBJsExp/blob/master/images/Screenshot_4.png?raw=true)
-![](https://github.com/0crash0/myOBJsExp/blob/master/images/Screenshot_5.png?raw=true)
+
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_4.png)
+
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_5.png)
 
 4. Done.
 
 Select objects to export, run the script 
 
-![](https://github.com/0crash0/myOBJsExp/blob/master/images/Screenshot_6.png?raw=true)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_6.png)
 
 Select destanation folder and press "Export All"
 
-![](https://github.com/0crash0/myOBJsExp/blob/master/images/Screenshot_7.png?raw=true)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_7.png)
 
 
 if some files are exist, you have to check the "Rewrite" box, or change object's exporting name
 
-![](https://github.com/0crash0/myOBJsExp/blob/master/images/Screenshot_8.png?raw=true)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_8.png)
