@@ -50,3 +50,4 @@ Select objects to export, run the script. Select destanation folder and press "E
 if some files are exist, you have to check the "Rewrite" box, or change object's exporting name
 
 ![](https://raw.githubusercontent.com/0crash0/myOBJsExp/main/images/Screenshot_7.png)
+
