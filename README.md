@@ -26,32 +26,32 @@
 
 2. You can create button on the shelf:
 
-![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_1.png)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/main/images/Screenshot_1.png)
 
-![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_2.png)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/main/images/Screenshot_2.png)
 
-![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_3.png)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/main/images/Screenshot_3.png)
 
 	and add that mel script:
 `source "myOBJsExp/myOBJsExp.mel"; myOBJsExp_UI();`
 
 3. You have to enable objExport plugin:
 
-![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_4.png)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/main/images/Screenshot_4.png)
 
-![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_5.png)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/main/images/Screenshot_5.png)
 
 4. Done.
 
 Select objects to export, run the script 
 
-![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_6.png)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/main/images/Screenshot_6.png)
 
 Select destanation folder and press "Export All"
 
-![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_7.png)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/main/images/Screenshot_7.png)
 
 
 if some files are exist, you have to check the "Rewrite" box, or change object's exporting name
 
-![](https://raw.githubusercontent.com/0crash0/myOBJsExp/blob/master/images/Screenshot_8.png)
+![](https://raw.githubusercontent.com/0crash0/myOBJsExp/main/images/Screenshot_8.png)
